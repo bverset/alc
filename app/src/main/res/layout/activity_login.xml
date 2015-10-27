@@ -23,7 +23,7 @@
 			android:layout_height="wrap_content"
 			android:text="Login"
 			android:textSize="40sp"
-			android:textColor="@color/colorPrimary_light"
+			android:textColor="@color/white"
 			android:textStyle="bold"
 			/>
 
