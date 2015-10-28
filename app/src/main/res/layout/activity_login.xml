@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:background="@color/colorPrimary"
 	>
 
@@ -34,11 +32,13 @@
 			>
 
 			<EditText
+				android:id="@+id/et_name"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:drawableLeft="@mipmap/ic_name"
 				android:drawableStart="@mipmap/ic_name"
 				android:drawablePadding="10dp"
+				android:inputType="text"
 				android:hint="Nombre"
 				android:imeOptions="actionNext"
 				android:singleLine="true"
@@ -52,11 +52,13 @@
 			>
 
 			<EditText
+				android:id="@+id/et_mail"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:drawableLeft="@mipmap/ic_email"
 				android:drawableStart="@mipmap/ic_email"
 				android:drawablePadding="10dp"
+				android:inputType="textEmailAddress"
 				android:hint="Email"
 				android:textColorHint="@color/white"
 				android:textColor="@color/white"
@@ -72,11 +74,13 @@
 			>
 
 			<EditText
+				android:id="@+id/et_cel"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:drawableLeft="@mipmap/ic_cel"
 				android:drawableStart="@mipmap/ic_cel"
 				android:drawablePadding="10dp"
+				android:inputType="number"
 				android:hint="Celular"
 				android:textColorHint="@color/white"
 				android:textColor="@color/white"
@@ -93,11 +97,13 @@
 			>
 
 			<EditText
+				android:id="@+id/et_phone"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:drawableLeft="@mipmap/ic_phone"
 				android:drawableStart="@mipmap/ic_phone"
 				android:drawablePadding="10dp"
+				android:inputType="number"
 				android:hint="Phone"
 				android:textColorHint="@color/white"
 				android:textColor="@color/white"
