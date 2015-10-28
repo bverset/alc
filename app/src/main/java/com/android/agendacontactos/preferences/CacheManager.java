@@ -32,6 +32,14 @@ public class CacheManager {
 
     public Contact getUser(){
 
+        String name = pref.getString(KeysShared.KEY_NAME, "");
+        String email = pref.getString(KeysShared.KEY_EMAIL, "");
+        String cel = pref.getString(KeysShared.KEY_CEL, "");
+        String phone = pref.getString(KeysShared.KEY_PHONE, "");
+
+        Contact c = new Contact(name, email, cel, phone);
+
+        return c;
     }
 
     public boolean isLoggin(){
