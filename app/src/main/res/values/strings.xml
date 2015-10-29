@@ -1,4 +1,14 @@
 <resources>
 	<string name="app_name">AgendaContactos</string>
 	<string name="error_login_1">Error, Todos los campos son requeridos</string>
+	<string-array name="a_grupo">
+		<item>"Amigos"</item>
+		<item>"Familia"</item>
+		<item>"Socios"</item>
+	</string-array>
+	<integer-array name="a_grupo_values">
+		<item >0</item>
+		<item >1</item>
+		<item >2</item>
+	</integer-array>
 </resources>

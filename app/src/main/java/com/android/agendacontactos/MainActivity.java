@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.android.agendacontactos.adapter.ViewPagerAdapter;
 import com.android.agendacontactos.fragment.DummyFragment;
+import com.android.agendacontactos.fragment.FormFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(mToolbar);
         mTabLayout.addTab(mTabLayout.newTab().setText("TAB1"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("TAB2"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("FORM"));
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFrag(new DummyFragment());
-        viewPagerAdapter.addFrag(new DummyFragment());
+        viewPagerAdapter.addFrag(new FormFragment());
 
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.addOnPageChangeListener(
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
+                mViewPager.setCurrentItem(tab.getPosition());
 
                 switch (tab.getPosition()){
                     case 0:
