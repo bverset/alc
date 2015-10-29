@@ -30,17 +30,13 @@ public class DummyFragment extends Fragment {
         super.onCreate(savedInstanceState);
         cacheManager = new CacheManager(getContext());
     }
-
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dummy, container, false);
         ButterKnife.bind(this, rootView);
-
         return rootView;
     }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
