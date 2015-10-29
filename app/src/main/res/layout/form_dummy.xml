@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:paddingTop="5dp"
+        android:gravity="center"
+        >
+
+    <ImageView
+        android:layout_width="150dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:layout_height="150dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextLabel"
+        >
+
+        <EditText
+            android:id="@+id/edt_nombre"
+            android:paddingTop="20dp"
+            android:layout_below="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_name"
+            android:drawableStart="@mipmap/ic_name"
+            android:drawablePadding="10dp"
+            android:inputType="textPersonName"
+            android:hint="Nombre"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextLabel"
+            >
+
+            <EditText
+                android:id="@+id/edt_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_email"
+                android:drawableStart="@mipmap/ic_email"
+                android:drawablePadding="10dp"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextLabel"
+            >
+
+            <EditText
+                android:id="@+id/edt_celular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_cel"
+                android:drawableStart="@mipmap/ic_cel"
+                android:drawablePadding="10dp"
+                android:inputType="number"
+                android:hint="Celular"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextLabel"
+            >
+
+            <EditText
+                android:id="@+id/edt_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_phone"
+                android:drawableStart="@mipmap/ic_phone"
+                android:drawablePadding="10dp"
+                android:inputType="number"
+                android:hint="Phone"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spi_grupo"
+        android:layout_below="@+id/edt_telefono"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:hint="Grupo"
+        android:selectAllOnFocus="true"
+        android:autoText="false"
+        android:entries="@array/a_grupo"
+        android:entryValues="@array/a_grupo_values" />
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_guardar"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:theme="@style/AppTheme.Button"
+        android:text="GUARDAR"
+        android:layout_alignParentStart="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/spi_grupo"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"/>
+
+
+    </LinearLayout>
+</ScrollView>
