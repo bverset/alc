@@ -26,8 +26,4 @@
 		android:layout_centerHorizontal="true"
 		android:src="@mipmap/ic_splash"
 		/>
-
-
-
-
 </RelativeLayout>

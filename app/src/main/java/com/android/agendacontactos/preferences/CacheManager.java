@@ -34,8 +34,8 @@ public class CacheManager {
 
         String name = pref.getString(KeysShared.KEY_NAME, "");
         String email = pref.getString(KeysShared.KEY_EMAIL, "");
-        String cel = pref.getString(KeysShared.KEY_CEL, "");
-        String phone = pref.getString(KeysShared.KEY_PHONE, "");
+        String cel = pref.getString(KeysShared.KEY_CEL, "0");
+        String phone = pref.getString(KeysShared.KEY_PHONE, "0");
 
         Contact c = new Contact(name, email, cel, phone);
 
