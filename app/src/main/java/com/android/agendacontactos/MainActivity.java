@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFrag(new FormFragment());
 
         mViewPager.setAdapter(viewPagerAdapter);
-        mViewPager.addOnPageChangeListener(
-                new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
 
 
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
