@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.android.agendacontactos.R;
+import com.android.agendacontactos.database.SQL;
 import com.android.agendacontactos.model.Contact;
 import com.android.agendacontactos.preferences.CacheManager;
 
@@ -26,8 +28,9 @@ import butterknife.OnClick;
 public class FormFragment extends Fragment {
 
     private CacheManager cacheManager;
-    String nombre,correo,edad,celular,telefono,grupo;
+    String nombre,correo,celular,telefono,grupo;
     private final String emailPattern = "[a-zA-Z0-9.-_]+@[a-z]+\\.+[a-z]+";
+    private SQL sql;
 
     @Bind(R.id.edt_nombre) EditText nombre_et;
     @Bind(R.id.edt_correo) EditText correo_et;
@@ -39,6 +42,7 @@ public class FormFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cacheManager = new CacheManager(getContext());
+        sql = new SQL(getContext());
     }
 
     @Override
@@ -84,6 +88,10 @@ public class FormFragment extends Fragment {
             }
 
             else{
+                Contact contact = new Contact(0,nombre,correo,celular,telefono,"",grupo);
+                long id = sql.insertContact(contact);
+                Log.d("SQLITE","-->"+id);
+                Log.d("SQLITE",sql.getContact(id).getName());
                 showErrorF("OK", v);
             }
         }else{
