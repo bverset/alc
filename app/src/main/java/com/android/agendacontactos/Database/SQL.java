@@ -1,15 +1,19 @@
 package com.android.agendacontactos.Database;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-
-        import android.content.ContentValues;
-        import android.content.Context;
-        import android.database.Cursor;
-        import android.database.sqlite.SQLiteDatabase;
-        import android.database.sqlite.SQLiteException;
 
 import com.android.agendacontactos.model.Contact;
 
+import java.util.ArrayList;
+
+/**
+ * Created by James on 29/10/15.
+ */
 public class SQL extends SQLiteOpenHelper {
 
     private final static String DATABASE_NAME = "nombrebd";
@@ -138,6 +142,20 @@ public class SQL extends SQLiteOpenHelper {
 
 
         return contact;
+    }
+
+    //obligatorio
+    public ArrayList<Contact> getAll(){
+        ArrayList<Contact> al = new ArrayList<>();
+
+        return al;
+    }
+
+    //opcional
+    public boolean checkContact(long id){
+        //true si es existe
+
+        return false;
     }
 
 }

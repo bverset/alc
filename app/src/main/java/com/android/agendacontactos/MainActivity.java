@@ -1,5 +1,4 @@
 package com.android.agendacontactos;
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -20,24 +19,28 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.tab_layout) TabLayout mTabLayout;
     @Bind(R.id.viewpager) ViewPager mViewPager;
 
+    DummyFragment dummyFragment;
+    FormFragment formFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        dummyFragment = new DummyFragment();
+        formFragment = new FormFragment();
+
         setSupportActionBar(mToolbar);
         mTabLayout.addTab(mTabLayout.newTab().setText("TAB1"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("FORM"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Form"));
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFrag(new DummyFragment());
-        viewPagerAdapter.addFrag(new FormFragment());
+        viewPagerAdapter.addFrag(dummyFragment);
+        viewPagerAdapter.addFrag(formFragment);
 
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-
-
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    public void newData(long id){ //patron observer
+        dummyFragment.refresh(id);
     }
 }

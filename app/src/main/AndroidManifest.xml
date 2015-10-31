@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 classes
 ContactListadapter java
@@ -16,7 +17,7 @@ dummyfragment montrer bien les données mais seulement les données remplies par
 faire maj quand on clique sur la liste mettre dans la fenetre du tab2 pour faire update
 
 -->
-<?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.agendacontactos" >
 

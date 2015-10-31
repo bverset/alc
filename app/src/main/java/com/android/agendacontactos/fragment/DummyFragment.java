@@ -1,17 +1,21 @@
 package com.android.agendacontactos.fragment;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+
+import com.android.agendacontactos.Database.SQL;
 import com.android.agendacontactos.R;
+import com.android.agendacontactos.adapter.ContactListAdapter;
 import com.android.agendacontactos.model.Contact;
-import com.android.agendacontactos.preferences.CacheManager;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,28 +25,56 @@ import butterknife.ButterKnife;
  */
 public class DummyFragment extends Fragment {
 
-    @Bind(R.id.tv_dummy) TextView tvDummy;
-
-    private CacheManager cacheManager;
+    @Bind(R.id.list) RecyclerView list;
+    private ContactListAdapter adapter;
+    private ArrayList<Contact> data;
+    private SQL sql;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cacheManager = new CacheManager(getContext());
+
+        sql = new SQL(getContext());
+        data = new ArrayList<>();
+
+        //leer todos los contactos la primerea vez que inica
+        Contact contact = sql.getContact(1);
+        if(contact != null){
+            data.add(contact);
+        }
     }
+
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dummy, container, false);
         ButterKnife.bind(this, rootView);
+
         return rootView;
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Contact c = cacheManager.getUser();
-        tvDummy.setText(c.getName());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        adapter = new ContactListAdapter(data);
+        list.setLayoutManager(linearLayoutManager);
+        list.setAdapter(adapter);
+
+    }
+
+    public void refresh(long id){
+
+        //hace un peticion a sql
+        Contact contact = sql.getContact(id); //all
+        if(contact != null){
+            data.add(contact);
+        }
+
+        adapter.setData(data);
+        adapter.notifyDataSetChanged();
 
     }
 }
