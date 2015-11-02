@@ -1,6 +1,10 @@
 package com.android.agendacontactos.adapter;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.agendacontactos.Database.SQL;
+import com.android.agendacontactos.MainActivity;
 import com.android.agendacontactos.R;
+import com.android.agendacontactos.SplashActivity;
+import com.android.agendacontactos.fragment.DummyFragment;
+import com.android.agendacontactos.fragment.FormFragment;
 import com.android.agendacontactos.model.Contact;
 
 import java.util.ArrayList;
@@ -22,6 +31,8 @@ import butterknife.ButterKnife;
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>{
 
     private ArrayList<Contact> data;
+
+    public static Contact contactStatic = null;
 
     public ContactListAdapter(ArrayList<Contact> data) {
         this.data = data;
@@ -52,23 +63,32 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
         @Bind(R.id.tv_name) TextView tvName;
         @Bind(R.id.tv_email) TextView tvMail;
+        @Bind(R.id.tv_celular) TextView tvCelular;
+        @Bind(R.id.tv_telefono) TextView tvTelefono;
+        @Bind(R.id.tv_grupo) TextView tvGrupo;
 
-
-        public ContactViewHolder(View itemView) {
+        public ContactViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+           itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Click element ", Toast.LENGTH_LONG).show();
+                    int pos = getAdapterPosition();
+                    contactStatic = data.get(pos);
+                    Toast.makeText(v.getContext(), "Click element "+ data.get(pos).getName(), Toast.LENGTH_SHORT).show();
                 }
             });
+
         }
 
         public void bindHolder(Contact contact){
             tvName.setText(contact.getName());
             tvMail.setText(contact.getEmail());
+            tvCelular.setText(contact.getCel());
+            tvTelefono.setText(contact.getPhone());
+            tvGrupo.setText(contact.getGroup());
+
         }
     }
 }

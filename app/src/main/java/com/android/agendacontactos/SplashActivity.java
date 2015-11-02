@@ -21,12 +21,13 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i;
-                if(cacheManager.isLoggin()){
+                /*if(cacheManager.isLoggin()){
                     i = new Intent(SplashActivity.this, MainActivity.class);
                 }else{
                     i = new Intent(SplashActivity.this, LoginActivity.class);
                 }
-
+                */
+                i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

@@ -79,7 +79,10 @@ public class SQL extends SQLiteOpenHelper {
             rowId = db.insert(TABLE_CONTACT, null, createContent(contact));
         }catch (SQLiteException e){}
 
+        db.close();
+
         return rowId;
+
     }
 
     public boolean updateContact(Contact contact){
@@ -95,6 +98,8 @@ public class SQL extends SQLiteOpenHelper {
 
         }catch (SQLiteException e){}
 
+        db.close();
+
         return rowId > 0;
     }
 
@@ -109,6 +114,8 @@ public class SQL extends SQLiteOpenHelper {
             );
 
         }catch (SQLiteException e){}
+
+        db.close();
 
         return rowId > 0;
     }
@@ -136,10 +143,12 @@ public class SQL extends SQLiteOpenHelper {
                 contact = new Contact(cursor.getLong(0),
                         cursor.getString(1), cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), cursor.getString(5), cursor.getString(6));
+                cursor.close();
             }
 
         }catch (SQLiteException e){}
 
+        db.close();
 
         return contact;
     }
@@ -147,15 +156,66 @@ public class SQL extends SQLiteOpenHelper {
     //obligatorio
     public ArrayList<Contact> getAll(){
         ArrayList<Contact> al = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = null;
+        Contact contact = null;
+
+        try {
+
+            cursor = db.rawQuery("SELECT  * FROM " + TABLE_CONTACT, null);
+
+            if(cursor != null && cursor.getCount() > 0){
+                cursor.moveToFirst();
+                do {
+                contact = new Contact(cursor.getLong(0),
+                        cursor.getString(1), cursor.getString(2), cursor.getString(3),
+                        cursor.getString(4), cursor.getString(5), cursor.getString(6));
+                    al.add(contact);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+
+        }catch (SQLiteException e){}
+
+        db.close();
 
         return al;
     }
 
     //opcional
-    public boolean checkContact(long id){
+    public long checkContact(String nombre){
         //true si es existe
+        long rowId = -1;
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = null;
 
-        return false;
+        try {
+
+            cursor = db.query(TABLE_CONTACT,
+                    COLUMNS,
+                    CONTACT_NAME + "=?",
+                    new String[]{nombre},
+                    null,
+                    null,
+                    null,
+                    null
+            );
+
+            //cursor = db.rawQuery("SELECT * FROM " + TABLE_CONTACT + " where "+ CONTACT_NAME + " = " + nombre, null);
+
+            if(cursor != null && cursor.getCount() > 0){
+                cursor.moveToFirst();
+                rowId = cursor.getLong(0);
+                cursor.close();
+
+            }
+
+        }catch (SQLiteException e){}
+
+        db.close();
+
+        return rowId;
+
     }
 
 }

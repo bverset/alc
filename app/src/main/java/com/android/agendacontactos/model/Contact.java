@@ -1,5 +1,7 @@
 package com.android.agendacontactos.model;
 
+import java.util.List;
+
 /**
  * Created by James on 27/10/15.
  */
