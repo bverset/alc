@@ -1,5 +1,6 @@
 package com.android.agendacontactos.fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,10 +45,11 @@ public class DummyFragment extends Fragment {
         //leer todos los contactos la primerea vez que inica
 
         data = sql.getAll();
+
+
     }
 
-    @Nullable
-    @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dummy, container, false);
@@ -65,7 +67,11 @@ public class DummyFragment extends Fragment {
         adapter = new ContactListAdapter(data);
         list.setLayoutManager(linearLayoutManager);
         list.setAdapter(adapter);
+
+
     }
+
+
 
     public void refresh(long id ,boolean all ){
 

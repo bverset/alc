@@ -48,6 +48,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         return new ContactViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int position) {
         Contact contact = data.get(position);
@@ -67,18 +68,21 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         @Bind(R.id.tv_telefono) TextView tvTelefono;
         @Bind(R.id.tv_grupo) TextView tvGrupo;
 
+        FormFragment formFragment;
+
         public ContactViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-           itemView.setOnClickListener(new View.OnClickListener() {
+/*           itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //formFragment.getContext();  // clickRecycler();
                     int pos = getAdapterPosition();
                     contactStatic = data.get(pos);
                     Toast.makeText(v.getContext(), "Click element "+ data.get(pos).getName(), Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
 
         }
 

@@ -179,5 +179,7 @@ public class FormFragment extends Fragment {
         new_btn.setVisibility(View.INVISIBLE);
     }
 
-
+    public void clickRecycler() {
+        Log.d("SQLITE", "click");
+    }
 }

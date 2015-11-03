@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (tab.getPosition()){
                     case 0:
-                        Log.d("AGENDACONTACTOS", "TAB#1");
                         break;
                     case 1:
                         formFragment.setForm();
