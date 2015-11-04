@@ -1,17 +1,12 @@
 package com.android.agendacontactos.fragment;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 import com.android.agendacontactos.Database.SQL;
@@ -19,6 +14,7 @@ import com.android.agendacontactos.MainActivity;
 import com.android.agendacontactos.R;
 import com.android.agendacontactos.adapter.ContactListAdapter;
 import com.android.agendacontactos.model.Contact;
+import com.android.agendacontactos.Observer;
 
 import java.util.ArrayList;
 
@@ -28,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * Created by James on 28/10/15.
  */
-public class DummyFragment extends Fragment {
+public class DummyFragment extends Fragment implements Observer {  //implémenter la méthode de la classe java observer qu"on a faite avec interface
 
     @Bind(R.id.list) RecyclerView list;
     private ContactListAdapter adapter;
@@ -41,12 +37,8 @@ public class DummyFragment extends Fragment {
 
         sql = new SQL(getContext());
         data = new ArrayList<>();
-
         //leer todos los contactos la primerea vez que inica
-
         data = sql.getAll();
-
-
     }
 
 
@@ -65,13 +57,12 @@ public class DummyFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         adapter = new ContactListAdapter(data);
+        adapter.setObserver(this);     //observer on dit a la adapter contact que l'observateur est ici
         list.setLayoutManager(linearLayoutManager);
         list.setAdapter(adapter);
 
 
     }
-
-
 
     public void refresh(long id ,boolean all ){
 
@@ -90,6 +81,10 @@ public class DummyFragment extends Fragment {
 
     }
 
+    @Override
+    public void onClickContact(Contact c) {
+       ((MainActivity)getActivity()).onClickContactAdapter(c); //observer uniqt avec fragment main est le père
+    }
 }
 
 

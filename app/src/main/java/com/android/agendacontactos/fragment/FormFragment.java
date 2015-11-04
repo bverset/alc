@@ -140,23 +140,24 @@ public class FormFragment extends Fragment {
         snackbar.show();
     }
 
-    public void setForm(){
-        if (ContactListAdapter.contactStatic != null){
-            Contact contact = new Contact(ContactListAdapter.contactStatic.getId(),ContactListAdapter.contactStatic.getName(),ContactListAdapter.contactStatic.getEmail(),ContactListAdapter.contactStatic.getCel(),ContactListAdapter.contactStatic.getPhone(),"",ContactListAdapter.contactStatic.getGroup());
+    public void setForm(Contact contact){
+       // if (ContactListAdapter.contactStatic != null){
+        //    contact = new Contact(ContactListAdapter.contactStatic.getId(),ContactListAdapter.contactStatic.getName(),ContactListAdapter.contactStatic.getEmail(),ContactListAdapter.contactStatic.getCel(),ContactListAdapter.contactStatic.getPhone(),"",ContactListAdapter.contactStatic.getGroup());
             nombre_et.setText(contact.getName());
+            nombre_et.setEnabled(false); //comme c'est la clef on ne permet pa de modifier le nom
             correo_et.setText(contact.getEmail());
             celular_et.setText(contact.getCel());
             telefono_et.setText(contact.getPhone());
             grupo_sp.setSelection(getIndex(grupo_sp, contact.getGroup()));
             button_btn.setText("ACTUALIZAR");
-            contactSel = ContactListAdapter.contactStatic;
-            ContactListAdapter.contactStatic = null;
+            //contactSel = ContactListAdapter.contactStatic;
+            //ContactListAdapter.contactStatic = null;
             supprimir_btn.setVisibility(View.VISIBLE);
             new_btn.setVisibility(View.VISIBLE);
-        }
-        else {
-            clearForm();
-        }
+       // }
+       // else {
+       //     clearForm();
+       // }
     }
     private int getIndex(Spinner spinner, String myString){
         int index = 0;
@@ -170,6 +171,7 @@ public class FormFragment extends Fragment {
 
     private void clearForm(){
         nombre_et.setText("");
+        nombre_et.setEnabled(true);
         correo_et.setText("");
         celular_et.setText("");
         telefono_et.setText("");

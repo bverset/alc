@@ -77,9 +77,10 @@ public class SQL extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         try {
             rowId = db.insert(TABLE_CONTACT, null, createContent(contact));
-        }catch (SQLiteException e){}
-
-        db.close();
+            db.close();
+        }catch (SQLiteException e){
+            db.close();
+        }
 
         return rowId;
 
@@ -146,7 +147,11 @@ public class SQL extends SQLiteOpenHelper {
                 cursor.close();
             }
 
-        }catch (SQLiteException e){}
+        }catch (SQLiteException e){
+            if(cursor != null){
+                cursor.close();
+            }
+        }
 
         db.close();
 
@@ -176,7 +181,9 @@ public class SQL extends SQLiteOpenHelper {
             }
 
         }catch (SQLiteException e){}
-
+        if(cursor != null){
+            cursor.close();
+        }
         db.close();
 
         return al;

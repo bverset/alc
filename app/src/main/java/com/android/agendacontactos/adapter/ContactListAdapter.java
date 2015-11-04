@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.agendacontactos.Database.SQL;
 import com.android.agendacontactos.MainActivity;
+import com.android.agendacontactos.Observer;
 import com.android.agendacontactos.R;
 import com.android.agendacontactos.SplashActivity;
 import com.android.agendacontactos.fragment.DummyFragment;
@@ -31,6 +32,7 @@ import butterknife.ButterKnife;
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>{
 
     private ArrayList<Contact> data;
+    Observer observer;   //observer
 
     public static Contact contactStatic = null;
 
@@ -41,6 +43,10 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public void setData(ArrayList<Contact> data) {
         this.data = data;
     }
+
+    public void setObserver(Observer observer) {
+        this.observer = observer;
+    }  //observer appelé depuis dummyFragment qui est le père
 
     @Override
     public ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -68,25 +74,27 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         @Bind(R.id.tv_telefono) TextView tvTelefono;
         @Bind(R.id.tv_grupo) TextView tvGrupo;
 
-        FormFragment formFragment;
+        Contact contact;
+
 
         public ContactViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-/*           itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //formFragment.getContext();  // clickRecycler();
-                    int pos = getAdapterPosition();
-                    contactStatic = data.get(pos);
-                    Toast.makeText(v.getContext(), "Click element "+ data.get(pos).getName(), Toast.LENGTH_SHORT).show();
-                }
-            });*/
 
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+                public void onClick(View v) {
+                     //int pos = getAdapterPosition();
+                    //contactStatic = data.get(pos);
+                    observer.onClickContact(contact);  // assigné dans bindHolder
+                    //Toast.makeText(v.getContext(), "Click element "+ contact.getName(), Toast.LENGTH_SHORT).show();
+               }
+            });
         }
 
-        public void bindHolder(Contact contact){
+        public void bindHolder(Contact contact){  // vient de onBindViewHolder
+            this.contact = contact;
             tvName.setText(contact.getName());
             tvMail.setText(contact.getEmail());
             tvCelular.setText(contact.getCel());
