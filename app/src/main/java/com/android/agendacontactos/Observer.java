@@ -6,6 +6,6 @@ import com.android.agendacontactos.model.Contact;
  * Created by Bernard on 04/11/2015.
  */
     public interface Observer {     //observer
-        void onClickContact(Contact c);
+      void onClickContact(Contact c);
 
 }

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     DummyFragment dummyFragment;
     FormFragment formFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         dummyFragment = new DummyFragment();
         formFragment = new FormFragment();
+        JSon js = new JSon();
 
         setSupportActionBar(mToolbar);
         mTabLayout.addTab(mTabLayout.newTab().setText("Contactos"),0,true);
