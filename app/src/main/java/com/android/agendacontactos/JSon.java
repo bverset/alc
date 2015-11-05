@@ -61,13 +61,13 @@ public class JSon {
             //Log.d("JSON", "Name "+name);
 
             JSONArray arraycontacts = jObject.getJSONArray("contacts");
-
+            ArrayList<String> arraycontactsList = new ArrayList<>();
             for (int i=0;i<arraycontacts.length();i++){
                 //Log.d("JSON", "Element "+arraycontacts.get(i).toString());
 
 
                 JSONObject jContact=new JSONObject(arraycontacts.getJSONObject(i).toString());
-                //ArrayList arrayContact = new ArrayList[];
+
                 String id = jContact.getString("id");
                 Log.d("JSON", "ID "+id);
                 String name = jContact.getString("name");
@@ -86,6 +86,7 @@ public class JSon {
                 Log.d("JSON", "Mobile " + mobile);
                 String address = jContact.getString("address");
                 Log.d("JSON", "Address " + address);
+                arraycontactsList.add(id);
 
                 //Reeconstruir
                 JSONObject invJContact=new JSONObject();
