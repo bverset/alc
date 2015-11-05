@@ -47,7 +47,6 @@ public class DummyFragment extends Fragment implements Observer {  //implémente
         View rootView = inflater.inflate(R.layout.fragment_dummy, container, false);
         ButterKnife.bind(this, rootView);
 
-
         return rootView;
     }
 

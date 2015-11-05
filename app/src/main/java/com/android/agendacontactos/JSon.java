@@ -11,6 +11,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bernard on 04/11/2015.
@@ -18,31 +22,86 @@ import java.net.URL;
 
 
 public class JSon {
-    String input = "{\"coord\":{\"lon\":-122.09,\"lat\":37.39},\n" +
-            "\"sys\":{\"type\":3,\"id\":168940,\"message\":0.0297,\"country\":\"US\",\"sunrise\":1427723751,\"sunset\":1427768967},\n" +
-            "\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"Sky is Clear\",\"icon\":\"01n\"}],\n" +
-            "\"base\":\"stations\",\n" +
-            "\"main\":{\"temp\":285.68,\"humidity\":74,\"pressure\":1016.8,\"temp_min\":284.82,\"temp_max\":286.48},\n" +
-            "\"wind\":{\"speed\":0.96,\"deg\":285.001},\n" +
-            "\"clouds\":{\"all\":0},\n" +
-            "\"dt\":1427700245,\n" +
-            "\"id\":0,\n" +
-            "\"name\":\"Mountain View\",\n" +
-            "\"cod\":200}";
+    String jSonText = "{\n" +
+            "   \"contacts\":[\n" +
+            "      {\n" +
+            "         \"id\":\"c200\",\n" +
+            "         \"name\":\"Ravi Tamada\",\n" +
+            "         \"email\":\"ravi@gmail.com\",\n" +
+            "         \"address\":\"xx-xx-xxxx,x - street, x - country\",\n" +
+            "         \"gender\":\"male\",\n" +
+            "         \"phone\":{\n" +
+            "            \"mobile\":\"+91 0000000000\",\n" +
+            "            \"home\":\"00 000000\",\n" +
+            "            \"office\":\"00 000000\"\n" +
+            "         }\n" +
+            "      },\n" +
+            "      {\n" +
+            "         \"id\":\"c201\",\n" +
+            "         \"name\":\"Johnny Depp\",\n" +
+            "         \"email\":\"johnny_depp@gmail.com\",\n" +
+            "         \"address\":\"xx-xx-xxxx,x - street, x - country\",\n" +
+            "         \"gender\":\"male\",\n" +
+            "         \"phone\":{\n" +
+            "            \"mobile\":\"+91 0000000000\",\n" +
+            "            \"home\":\"00 000000\",\n" +
+            "            \"office\":\"00 000000\"\n" +
+            "         }\n" +
+            "      }\n" +
+            "   ]\n" +
+            "}";
 
 
     public JSon(){
         Log.d("JSON","JSon");
-        Log.d("JSON",input);
+        //Log.d("JSON",input);
         try {
-            JSONArray jonA = new JSONArray(input);
-           // Log.d("JSON","Number of entries " + jonA.length());
+            JSONObject jObject=new JSONObject(jSonText);
+            //String name = jObject.getString("name");
+            //Log.d("JSON", "Name "+name);
+
+            JSONArray arraycontacts = jObject.getJSONArray("contacts");
+
+            for (int i=0;i<arraycontacts.length();i++){
+                //Log.d("JSON", "Element "+arraycontacts.get(i).toString());
+
+
+                JSONObject jContact=new JSONObject(arraycontacts.getJSONObject(i).toString());
+                //ArrayList arrayContact = new ArrayList[];
+                String id = jContact.getString("id");
+                Log.d("JSON", "ID "+id);
+                String name = jContact.getString("name");
+                Log.d("JSON", "Name "+name);
+                String email = jContact.getString("email");
+                Log.d("JSON", "Email "+email);
+                String gender = jContact.getString("gender");
+                Log.d("Gender", "ID "+gender);
+                JSONObject jphone = jContact.getJSONObject("phone");
+                Log.d("JSON", "Phones :");
+                String office = jphone.getString("office");
+                Log.d("JSON", "Office "+office);
+                String home = jphone.getString("home");
+                Log.d("JSON", "Home "+home);
+                String mobile = jphone.getString("mobile");
+                Log.d("JSON", "Mobile " + mobile);
+                String address = jContact.getString("address");
+                Log.d("JSON", "Address " + address);
+
+                //Reeconstruir
+                JSONObject invJContact=new JSONObject();
+                invJContact.accumulate("id",id);
+                invJContact.accumulate("name", name);
+            }
+
+
+
         }catch (Exception e) {
+            Log.d("JSON","Error "+e.getMessage());
         }
+
     }
 
-
-    public String apiWeather() {
+    public String readApiWeather() {
         StringBuilder builder = new StringBuilder();
 
         try {
@@ -50,7 +109,8 @@ public class JSon {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             Log.d("JSON",in.toString());
-            }catch (Exception e) {
+            }
+        catch (Exception e) {
             }
 
 

@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         dummyFragment = new DummyFragment();
         formFragment = new FormFragment();
-        JSon js = new JSon();
+        //JSon js = new JSon();
+        new VolleyRequest(this);
 
         setSupportActionBar(mToolbar);
         mTabLayout.addTab(mTabLayout.newTab().setText("Contactos"),0,true);

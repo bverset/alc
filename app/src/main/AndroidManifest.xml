@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-classes
-ContactListadapter java
-item_list xml
-fragment_dummy xml
-DummyFragment java
-Mainactivity java
-
-tarea
-
-1. click on guardar debe vaciar la fenetre formfragment
-2 base de datos nouvelle fonction pour lire tous les contacts obligatoro ou optionel si existe
-3 lire toutes les dponnées quand on rentre
-dummyfragment montrer bien les données mais seulement les données remplies par e cel ou tel
-
-faire maj quand on clique sur la liste mettre dans la fenetre du tab2 pour faire update
-
--->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.agendacontactos" >
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!--pour prefs-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
