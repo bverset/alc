@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.agendacontactos" >
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!--pour prefs-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- pour prefs -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,6 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" >
+        </activity>
+        <activity android:name=".ImageActivity" >
         </activity>
     </application>
 

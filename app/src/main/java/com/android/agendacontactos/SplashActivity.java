@@ -22,11 +22,18 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        Intent i;
+        i = new Intent(SplashActivity.this, ImageActivity.class);
+        startActivity(i);
+        finish();
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         cacheManager = new CacheManager(this);
 
-        new MiTarea().execute();
+        tarea();  //methode
+
+        new MiTarea().execute();  //class
 
 
         
@@ -120,8 +127,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         }).start();
     }
-
-
 
     private void tareaLarga(){
         try {
