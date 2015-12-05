@@ -36,8 +36,7 @@ public class VolleyRequest{
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.GET,
-                "http://api.openweathermap.org/data/2.5/weather?q=Medellin&APPID=482579f45f1dc55ae8bd36deafedc58b",
+                Request.Method.GET,"http://api.openweathermap.org/data/2.5/weather?q=Medellin&APPID=482579f45f1dc55ae8bd36deafedc58b",
                 "",
                 new Response.Listener<JSONObject>() {
                     @Override

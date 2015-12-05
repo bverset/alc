@@ -54,7 +54,6 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         return new ContactViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int position) {
         Contact contact = data.get(position);
