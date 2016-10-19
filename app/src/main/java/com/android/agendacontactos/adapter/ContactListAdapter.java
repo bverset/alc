@@ -16,7 +16,6 @@ import com.android.agendacontactos.Database.SQL;
 import com.android.agendacontactos.MainActivity;
 import com.android.agendacontactos.Observer;
 import com.android.agendacontactos.R;
-import com.android.agendacontactos.SplashActivity;
 import com.android.agendacontactos.fragment.DummyFragment;
 import com.android.agendacontactos.fragment.FormFragment;
 import com.android.agendacontactos.model.Contact;
